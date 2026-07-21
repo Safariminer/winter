@@ -13,6 +13,7 @@
 void checkDrivers(Winter::MegaDrivers::BaseMegaDriver* megaDriver) {
 	std::println("Checking drivers...");
 
+	// graphics driver
 	if (megaDriver->graphics() != nullptr) {
 		std::println(
 			"Graphics driver present: \"{}\" (assuming {} = 1)",
@@ -22,6 +23,7 @@ void checkDrivers(Winter::MegaDrivers::BaseMegaDriver* megaDriver) {
 	}
 	else std::println("No graphics drivers");
 
+	// audio driver
 	if (megaDriver->audio() != nullptr) {
 		std::println(
 			"Audio driver present: \"{}\" (assuming {} = 2)",
@@ -31,7 +33,7 @@ void checkDrivers(Winter::MegaDrivers::BaseMegaDriver* megaDriver) {
 	}
 	else std::println("No audio drivers");
 
-
+	// input driver
 	if (megaDriver->input() != nullptr) {
 		std::println(
 			"Input driver present: \"{}\" (assuming {} = 3)",
@@ -41,6 +43,7 @@ void checkDrivers(Winter::MegaDrivers::BaseMegaDriver* megaDriver) {
 	}
 	else std::println("No input drivers");
 
+	// network driver
 	if (megaDriver->net() != nullptr) {
 		std::println(
 			"Networking driver present: \"{}\" (assuming {} = 4)",
@@ -50,6 +53,7 @@ void checkDrivers(Winter::MegaDrivers::BaseMegaDriver* megaDriver) {
 	}
 	else std::println("No networking drivers");
 
+	// filesystem driver
 	if (megaDriver->fs() != nullptr) {
 		std::println(
 			"Filesystem driver present: \"{}\" (assuming {} = 5)",

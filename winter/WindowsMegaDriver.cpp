@@ -6,31 +6,31 @@ Winter::MegaDrivers::Impl::Windows::Windows()
 Winter::Drivers::BaseGraphicsDriver*
 Winter::MegaDrivers::Impl::Windows::graphics()
 {
-    return nullptr;
+    return drivers._graphics;
 }
 
 Winter::Drivers::BaseAudioDriver* 
 Winter::MegaDrivers::Impl::Windows::audio()
 {
-    return nullptr;
+    return drivers._audio;
 }
 
 Winter::Drivers::BaseInputDriver* 
 Winter::MegaDrivers::Impl::Windows::input()
 {
-    return nullptr;
+    return drivers._input;
 }
 
 Winter::Drivers::BaseNetDriver* 
 Winter::MegaDrivers::Impl::Windows::net()
 {
-    return nullptr;
+    return drivers._net;
 }
 
 Winter::Drivers::BaseFilesystemDriver* 
 Winter::MegaDrivers::Impl::Windows::fs()
 {
-    return nullptr;
+    return drivers._fs;
 }
 
 Winter::MegaDrivers::Impl::Windows::~Windows()
