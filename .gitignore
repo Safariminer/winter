@@ -1,0 +1,13 @@
+.vs
+*/.vs
+*.ipch
+*.user
+x86
+x64
+*/x86
+*/x64
+Debug
+*/Debug
+Release
+*/Release
+doxygen/*
