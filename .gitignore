@@ -11,3 +11,5 @@ Debug
 Release
 */Release
 doxygen/*
+deps
+env/SDL3.dll
