@@ -126,7 +126,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SOLUTIONDIR)deps/lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>x64/SDL3.lib;opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>x64/SDL3.lib;opengl32.lib;glu32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
@@ -148,13 +148,14 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SOLUTIONDIR)deps/lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>x64/SDL3.lib;opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>x64/SDL3.lib;opengl32.lib;glu32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Geometry3D.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpenGLDriver.cpp" />
     <ClCompile Include="SDLInputDriver.cpp" />
@@ -162,6 +163,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Drivers.h" />
+    <ClInclude Include="Geometry.h" />
+    <ClInclude Include="Geometry3D.h" />
     <ClInclude Include="MegaDrivers.h" />
     <ClInclude Include="OpenGLDriver.h" />
     <ClInclude Include="SDLInputDriver.h" />
