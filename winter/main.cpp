@@ -83,6 +83,73 @@ DriverPresenceStruct checkDrivers(
 }
 
 
+#include <fstream>
+#include <string>
+#include <sstream>
+
+ // DO NOT USE THIS IMPLEMENTATION
+// IT ASSUMES TRIANGULAR FACES AND DOESN'T DEAL WITH NORMALS NOR TEXCOORDS
+Winter::Math::Mesh parseObj(std::string path) {
+	using namespace Winter;
+	Math::Mesh m;
+
+	std::vector<Math::Vector3> vertices;
+
+	std::ifstream in(path);
+	std::string line;
+
+	while (std::getline(in, line)) {
+
+		if (line != "") {
+			std::stringstream ss(line);
+			
+			std::string op; ss >> op;
+
+			if (op == "v") {
+				float x, y, z;
+				ss >> x >> y >> z;
+
+				vertices.push_back({ x * 25, y * 25, z* 25 });
+			}
+
+			if (op == "f") {
+				std::string a, b, c;
+				std::string a2 = "", b2 = "", c2 = "";
+
+				ss >> a >> b >> c;
+
+				Math::Triangle3D tri;
+
+				for (const char& ch : a) {
+					if (ch == '/') break;
+					a2 += ch;
+				}
+
+				for (const char& ch : b) {
+					if (ch == '/') break;
+					b2 += ch;
+				}
+
+				for (const char& ch : c) {
+					if (ch == '/') break;
+					c2 += ch;
+				}
+
+				tri.a = vertices[std::stoi(a2) - 1];
+				tri.b = vertices[std::stoi(b2) - 1];
+				tri.c = vertices[std::stoi(c2) - 1];
+
+				m.tris.push_back(tri);
+			}
+		}
+
+
+
+	}
+	return m;
+}
+
+
 
 //! Entrypoint
 int main(int argc, char** argv) {
@@ -99,15 +166,8 @@ int main(int argc, char** argv) {
 	if (driversActive.graphics) {
 		megaDriver->graphics()->graphicsInit();
 
-		Math::Mesh mesh;
-
-		mesh.tris.push_back(
-			{
-				{0.5, 0.5, 0.0},
-				{0.5, -0.5, 0.0},
-				{-0.5, -0.5, 0.0},
-			}
-			);
+		Math::Mesh mesh = 
+			parseObj("testmodels/ambientcg/3DApple002_LQ-1K-PNG.obj");
 		megaDriver->graphics()->uploadMesh(mesh);
 
 
