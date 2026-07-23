@@ -27,6 +27,7 @@ namespace Winter {
 
 		struct Mesh {
 			std::vector<Triangle3D> tris;
+			bool disabled = false;
 		};
 
 	}

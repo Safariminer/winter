@@ -8,7 +8,11 @@ namespace Winter::Drivers::Impl {
 	class OpenGL : public BaseGraphicsDriver {
 		SDL_Window* window;
 		SDL_GLContext glContext;
-	
+		std::vector<Math::Mesh> meshes;
+		std::vector<int> unusedMeshIDs;
+
+		void drawMeshes();
+
 	public:
 		DriverInfo getDriverInfo();
 
@@ -17,7 +21,7 @@ namespace Winter::Drivers::Impl {
 		void graphicsDisplay();
 
 		size_t uploadMesh(Math::Mesh& m);
-
+		void unloadMesh(size_t mID);
 		void graphicsDestroy();
 		~OpenGL();
 	};

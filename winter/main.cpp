@@ -96,7 +96,22 @@ int main(int argc, char** argv) {
 
 	DriverPresenceStruct driversActive = checkDrivers(megaDriver);
 
-	if (driversActive.graphics) megaDriver->graphics()->graphicsInit();
+	if (driversActive.graphics) {
+		megaDriver->graphics()->graphicsInit();
+
+		Math::Mesh mesh;
+
+		mesh.tris.push_back(
+			{
+				{0.5, 0.5, 0.0},
+				{0.5, -0.5, 0.0},
+				{-0.5, -0.5, 0.0},
+			}
+			);
+		megaDriver->graphics()->uploadMesh(mesh);
+
+
+	}
 	if (driversActive.input) megaDriver->input()->inputInit();
 
 

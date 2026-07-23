@@ -9,6 +9,23 @@
 
 #include "Geometry3D.h"
 
+void Winter::Drivers::Impl::OpenGL::drawMeshes()
+{
+
+	for (Math::Mesh& m : meshes) {
+		if (!m.disabled) {
+			for (Math::Triangle3D& t : m.tris) {
+				glBegin(GL_TRIANGLES);
+				glVertex3f(t.a.x, t.a.y, t.a.z);
+				glVertex3f(t.b.x, t.b.y, t.b.z);
+				glVertex3f(t.c.x, t.c.y, t.c.z);
+				glEnd();
+			}
+		}
+	}
+
+}
+
 Winter::Drivers::DriverInfo Winter::Drivers::Impl::OpenGL::getDriverInfo()
 {
 	DriverInfo info;
@@ -38,9 +55,6 @@ void Winter::Drivers::Impl::OpenGL::graphicsInit()
 	glEnable(GL_DEPTH_TEST);
 }
 
-void drawMeshes() {
-
-}
 
 float angle = 0;
 
@@ -78,6 +92,7 @@ void Winter::Drivers::Impl::OpenGL::graphicsDisplay()
     glTranslatef(0.0f, 0.0f, -5.0f);
     glRotatef(angle, 0.0f, 1.0f, 0.0f);
 
+	drawMeshes();
 
     angle += 0.5;
 
@@ -86,7 +101,29 @@ void Winter::Drivers::Impl::OpenGL::graphicsDisplay()
 
 size_t Winter::Drivers::Impl::OpenGL::uploadMesh(Math::Mesh& m)
 {
-	return 0;
+	if (unusedMeshIDs.size() == 0) {
+		meshes.push_back(m);
+		return meshes.size() - 1;
+	}
+
+	else {
+		size_t id = unusedMeshIDs[0];
+		meshes[id] = m;
+
+		unusedMeshIDs.erase(unusedMeshIDs.begin());
+
+		return id;
+	}
+
+	return -1;
+}
+
+void Winter::Drivers::Impl::OpenGL::unloadMesh(size_t mID)
+{
+	meshes[mID].tris.clear();
+	meshes[mID].disabled = true;
+
+	unusedMeshIDs.push_back(mID);
 }
 
 void Winter::Drivers::Impl::OpenGL::graphicsDestroy()
