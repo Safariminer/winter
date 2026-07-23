@@ -84,8 +84,10 @@ void Winter::Drivers::Impl::OpenGL::graphicsDisplay()
 	SDL_GL_SwapWindow(window);
 }
 
-void Winter::Drivers::Impl::OpenGL::uploadMesh(Math::Mesh& m)
-{}
+size_t Winter::Drivers::Impl::OpenGL::uploadMesh(Math::Mesh& m)
+{
+	return 0;
+}
 
 void Winter::Drivers::Impl::OpenGL::graphicsDestroy()
 {}

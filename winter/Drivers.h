@@ -62,7 +62,7 @@ namespace Winter {
 			virtual void graphicsInit() = 0;
 			virtual void graphicsDisplay() = 0;
 
-			virtual void uploadMesh(Math::Mesh& m) = 0;
+			virtual size_t uploadMesh(Math::Mesh& m) = 0;
 
 			virtual void graphicsDestroy() = 0;
 		};

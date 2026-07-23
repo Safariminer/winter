@@ -15,6 +15,9 @@ namespace Winter::Drivers::Impl {
 		OpenGL(SDL_Window* w);
 		void graphicsInit();
 		void graphicsDisplay();
+
+		size_t uploadMesh(Math::Mesh& m);
+
 		void graphicsDestroy();
 		~OpenGL();
 	};
