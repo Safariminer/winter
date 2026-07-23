@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include "Geometry3D.h"
 
 namespace Winter {
 
@@ -60,6 +61,9 @@ namespace Winter {
 		public:
 			virtual void graphicsInit() = 0;
 			virtual void graphicsDisplay() = 0;
+
+			virtual void uploadMesh(Math::Mesh& m) = 0;
+
 			virtual void graphicsDestroy() = 0;
 		};
 

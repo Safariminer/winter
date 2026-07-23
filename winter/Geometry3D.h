@@ -1,6 +1,9 @@
 #pragma once
 
+#include <vector>
+
 #include "Geometry.h"
+
 
 namespace Winter {
 	namespace Math {
@@ -27,6 +30,16 @@ namespace Winter {
 		* 
 		*/
 		Matrix4x4 perspective(float fovy, Vector2 screenSize, Vector2 clips);
+
+
+
+		struct Triangle3D {
+			Vector3 a, b, c;
+		};
+
+		struct Mesh {
+			std::vector<Triangle3D> tris;
+		};
 
 	}
 }

@@ -38,7 +38,9 @@ void Winter::Drivers::Impl::OpenGL::graphicsInit()
 	glEnable(GL_DEPTH_TEST);
 }
 
+void drawMeshes() {
 
+}
 
 float angle = 0;
 
@@ -81,6 +83,9 @@ void Winter::Drivers::Impl::OpenGL::graphicsDisplay()
 
 	SDL_GL_SwapWindow(window);
 }
+
+void Winter::Drivers::Impl::OpenGL::uploadMesh(Math::Mesh& m)
+{}
 
 void Winter::Drivers::Impl::OpenGL::graphicsDestroy()
 {}
