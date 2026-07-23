@@ -154,11 +154,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OpenGLDriver.cpp" />
     <ClCompile Include="WindowsMegaDriver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Drivers.h" />
     <ClInclude Include="MegaDrivers.h" />
+    <ClInclude Include="OpenGLDriver.h" />
     <ClInclude Include="WindowsMegaDriver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

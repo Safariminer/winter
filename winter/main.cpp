@@ -9,8 +9,19 @@
 #include "WindowsMegaDriver.h"
 
 
+struct DriverPresenceStruct {
+	bool graphics = false;
+	bool audio = false;
+	bool input = false;
+	bool net = false;
+	bool filesystem = false;
+};
+
 //! Terminal screen that displays presence/absence of drivers
-void checkDrivers(Winter::MegaDrivers::BaseMegaDriver* megaDriver) {
+DriverPresenceStruct checkDrivers(
+	Winter::MegaDrivers::BaseMegaDriver* megaDriver
+) {
+	DriverPresenceStruct presence;
 	std::println("Checking drivers...");
 
 	// graphics driver
@@ -20,6 +31,7 @@ void checkDrivers(Winter::MegaDrivers::BaseMegaDriver* megaDriver) {
 			megaDriver->graphics()->getDriverInfo().driverName,
 			(int)megaDriver->graphics()->getDriverInfo().type
 		);
+		presence.graphics = true;
 	}
 	else std::println("No graphics drivers");
 
@@ -30,6 +42,7 @@ void checkDrivers(Winter::MegaDrivers::BaseMegaDriver* megaDriver) {
 			megaDriver->audio()->getDriverInfo().driverName,
 			(int)megaDriver->audio()->getDriverInfo().type
 		);
+		presence.audio = true;
 	}
 	else std::println("No audio drivers");
 
@@ -40,6 +53,7 @@ void checkDrivers(Winter::MegaDrivers::BaseMegaDriver* megaDriver) {
 			megaDriver->input()->getDriverInfo().driverName,
 			(int)megaDriver->input()->getDriverInfo().type
 		);
+		presence.input = true;
 	}
 	else std::println("No input drivers");
 
@@ -50,6 +64,7 @@ void checkDrivers(Winter::MegaDrivers::BaseMegaDriver* megaDriver) {
 			megaDriver->net()->getDriverInfo().driverName,
 			(int)megaDriver->net()->getDriverInfo().type
 		);
+		presence.net = true;
 	}
 	else std::println("No networking drivers");
 
@@ -60,8 +75,11 @@ void checkDrivers(Winter::MegaDrivers::BaseMegaDriver* megaDriver) {
 			megaDriver->fs()->getDriverInfo().driverName,
 			(int)megaDriver->fs()->getDriverInfo().type
 		);
+		presence.filesystem = true;
 	}
 	else std::println("No filesystem drivers");
+
+	return presence;
 }
 
 
@@ -76,7 +94,18 @@ int main(int argc, char** argv) {
 	// We're on Windows here so we don't have many choices
 	megaDriver = new MegaDrivers::Impl::Windows();
 
-	checkDrivers(megaDriver);
+	DriverPresenceStruct driversActive = checkDrivers(megaDriver);
+
+	if (driversActive.graphics) megaDriver->graphics()->graphicsInit();
+
+
+
+	while (!megaDriver->shouldStop()) {
+		if (driversActive.graphics) megaDriver->graphics()->graphicsDisplay();
+
+	}
+	
+	if (driversActive.graphics) megaDriver->graphics()->graphicsDestroy();
 
 
 }

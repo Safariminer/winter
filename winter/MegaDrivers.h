@@ -39,6 +39,7 @@ namespace Winter {
 			virtual Drivers::BaseInputDriver*       input() = 0;
 			virtual Drivers::BaseNetDriver*           net() = 0;
 			virtual Drivers::BaseFilesystemDriver*     fs() = 0;
+			virtual bool                       shouldStop() = 0;
 		};
 	}
 }
