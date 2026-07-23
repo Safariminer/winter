@@ -1,6 +1,10 @@
 #include "OpenGLDriver.h"
 
 #include <print>
+#ifdef _WIN64
+#include <Windows.h>
+#endif
+#include <gl/GL.h>
 
 Winter::Drivers::DriverInfo Winter::Drivers::Impl::OpenGL::getDriverInfo()
 {
@@ -28,7 +32,7 @@ void Winter::Drivers::Impl::OpenGL::graphicsInit()
 			)
 		);
 	}
-	
+	glEnable(GL_DEPTH_TEST);
 }
 
 void Winter::Drivers::Impl::OpenGL::graphicsDisplay()
