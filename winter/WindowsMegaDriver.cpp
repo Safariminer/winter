@@ -1,5 +1,12 @@
 #include "WindowsMegaDriver.h"
+
+// graphics drivers
 #include "OpenGLDriver.h"
+
+
+// input drivers
+#include "SDLInputDriver.h"
+
 #include <print>
 
 Winter::MegaDrivers::Impl::Windows::Windows()
@@ -19,6 +26,7 @@ Winter::MegaDrivers::Impl::Windows::Windows()
     }
 
     drivers._graphics = new Drivers::Impl::OpenGL(window);
+    drivers._input = new Drivers::Impl::SDLInput(window);
 
 }
 
@@ -54,12 +62,7 @@ Winter::MegaDrivers::Impl::Windows::fs()
 
 bool Winter::MegaDrivers::Impl::Windows::shouldStop()
 {
-    SDL_Event e;
-
-    while (SDL_PollEvent(&e)) {
-        if (e.type == SDL_EVENT_QUIT) return true;
-    }
-    return false;
+    return drivers._input->closeRequested();
 }
 
 Winter::MegaDrivers::Impl::Windows::~Windows()

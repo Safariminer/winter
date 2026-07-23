@@ -36,7 +36,9 @@ void Winter::Drivers::Impl::OpenGL::graphicsInit()
 }
 
 void Winter::Drivers::Impl::OpenGL::graphicsDisplay()
-{}
+{
+	
+}
 
 void Winter::Drivers::Impl::OpenGL::graphicsDestroy()
 {}

@@ -97,15 +97,17 @@ int main(int argc, char** argv) {
 	DriverPresenceStruct driversActive = checkDrivers(megaDriver);
 
 	if (driversActive.graphics) megaDriver->graphics()->graphicsInit();
-
+	if (driversActive.input) megaDriver->input()->inputInit();
 
 
 	while (!megaDriver->shouldStop()) {
+		if (driversActive.input) megaDriver->input()->inputUpdate();
 		if (driversActive.graphics) megaDriver->graphics()->graphicsDisplay();
 
 	}
 	
 	if (driversActive.graphics) megaDriver->graphics()->graphicsDestroy();
+	if (driversActive.input) megaDriver->input()->inputDestroy();
 
 
 }

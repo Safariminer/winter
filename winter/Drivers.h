@@ -77,6 +77,10 @@ namespace Winter {
 		*/
 		class BaseInputDriver : public BaseDriver {
 		public:
+			virtual void inputInit() = 0;
+			virtual void inputUpdate() = 0;
+			virtual bool closeRequested() = 0;
+			virtual void inputDestroy() = 0;
 		};
 
 		//! Base network driver class
