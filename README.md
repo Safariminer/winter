@@ -15,4 +15,7 @@ Building on/for any other platforms currently isn't supported.
 Winter uses Doxygen for documentation. There is a Doxyfile that allows you to build HTML documentation of every part of the engine. Documentation is not currently complete, but some classes and namespaces already have explanatory documentation.
 
 ## Licensing
-See [LICENSE](LICENSE).
+
+For assets marked as from AmbientCG, [they are distributed under a CC0 1.0 Universal License](https://docs.ambientcg.com/license/).
+
+For code, see [LICENSE](LICENSE).
