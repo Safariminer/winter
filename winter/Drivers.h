@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <optional>
+
 #include "Geometry3D.h"
 
 namespace Winter {
@@ -101,7 +103,11 @@ namespace Winter {
 		*   Implement all functions to get a working driver.
 		*/
 		class BaseFilesystemDriver : public BaseDriver {
-
+		public:
+			virtual void fsInit() = 0;
+			virtual std::optional<std::vector<char>> fsGet(std::string p) = 0;
+			virtual bool fsWrite(std::vector<char> s, std::string p) = 0;
+			virtual void fsDestroy() = 0;
 		};
 
 
