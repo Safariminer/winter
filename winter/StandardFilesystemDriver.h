@@ -2,8 +2,11 @@
 #include "Drivers.h"
 
 namespace Winter::Drivers::Impl {
-	class StandardFilesystem : BaseFilesystemDriver {
+	class StandardFilesystem : public BaseFilesystemDriver {
 	public:
+
+		DriverInfo getDriverInfo();
+
 		StandardFilesystem();
 
 		void fsInit();

@@ -3,6 +3,17 @@
 #include <fstream>
 
 
+Winter::Drivers::DriverInfo 
+Winter::Drivers::Impl::StandardFilesystem::getDriverInfo()
+{
+	DriverInfo info;
+
+	info.driverName = "Standard filesystem driver";
+	info.type = DRV_FILESYSTEM;
+
+	return info;
+}
+
 Winter::Drivers::Impl::StandardFilesystem::StandardFilesystem()
 {}
 

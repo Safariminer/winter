@@ -7,6 +7,10 @@
 // input drivers
 #include "SDLInputDriver.h"
 
+
+// filesystem drivers
+#include "StandardFilesystemDriver.h"
+
 #include <print>
 
 Winter::MegaDrivers::Impl::Windows::Windows()
@@ -27,7 +31,7 @@ Winter::MegaDrivers::Impl::Windows::Windows()
 
     drivers._graphics = new Drivers::Impl::OpenGL(window);
     drivers._input = new Drivers::Impl::SDLInput(window);
-
+    drivers._fs = new Drivers::Impl::StandardFilesystem();
 }
 
 Winter::Drivers::BaseGraphicsDriver*
