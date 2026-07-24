@@ -159,15 +159,18 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpenGLDriver.cpp" />
     <ClCompile Include="SDLInputDriver.cpp" />
+    <ClCompile Include="StandardFilesystemDriver.cpp" />
     <ClCompile Include="WindowsMegaDriver.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Graphics.h" />
     <ClInclude Include="Drivers.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="Geometry3D.h" />
     <ClInclude Include="MegaDrivers.h" />
     <ClInclude Include="OpenGLDriver.h" />
     <ClInclude Include="SDLInputDriver.h" />
+    <ClInclude Include="StandardFilesystemDriver.h" />
     <ClInclude Include="WindowsMegaDriver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
