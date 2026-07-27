@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Geometry.h"
 #include <vector>
 
 namespace Winter {
@@ -14,7 +15,7 @@ namespace Winter {
 			size_t width, height;
 		};
 
-
+		Image errorImage(Math::Vector2 size);
 
 	}
 }
