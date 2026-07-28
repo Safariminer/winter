@@ -86,6 +86,9 @@ namespace Winter {
 		public:
 			virtual void inputInit() = 0;
 			virtual void inputUpdate() = 0;
+			virtual void setInput(std::string key, long long int val) = 0;
+			virtual int getInput(std::string key) = 0;
+			virtual bool isDown(std::string key) = 0;
 			virtual bool closeRequested() = 0;
 			virtual void inputDestroy() = 0;
 		};
