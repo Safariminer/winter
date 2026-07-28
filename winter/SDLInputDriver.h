@@ -4,9 +4,12 @@
 #include <map>
 
 namespace Winter::Drivers::Impl {
+
+	//! SDL implementation of the BaseInputDriver abstract class
 	class SDLInput : public BaseInputDriver {
 		SDL_Window* window;
 		std::map<SDL_Keycode, bool> keyStatus;
+		std::map<std::string, SDL_Keycode> mappings;
 		bool close = false;
 	public:
 		DriverInfo getDriverInfo();

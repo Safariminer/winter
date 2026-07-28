@@ -5,6 +5,7 @@
 
 namespace Winter::Drivers::Impl {
 	
+	//! OpenGL SDL-Based impl. of the BaseGraphicalDriver abstract class
 	class OpenGL : public BaseGraphicsDriver {
 		SDL_Window* window;
 		SDL_GLContext glContext;
