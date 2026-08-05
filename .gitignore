@@ -13,3 +13,4 @@ Release
 doxygen/*
 deps
 env/SDL3.dll
+env/game.dll

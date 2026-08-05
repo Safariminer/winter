@@ -1,13 +1,17 @@
 // STL
 #include <print>
+#include <filesystem>
 
 // Engine code
 #include "Drivers.h"
 #include "MegaDrivers.h"
+#include "../common/WinterCommon.h"
 
 // Implementations
 #include "WindowsMegaDriver.h"
 
+#include <Windows.h>
+#include <libloaderapi.h>
 
 struct DriverPresenceStruct {
 	bool graphics = false;
@@ -150,13 +154,42 @@ Winter::Math::Mesh parseObj(std::string path) {
 }
 
 
+int proofOfCalling() {
+	std::println("Proof that the game can call the engine.");
+	return 0x01020304;
+}
 
 //! Entrypoint
 int main(int argc, char** argv) {
 	using namespace Winter;
+
+
 	MegaDrivers::BaseMegaDriver* megaDriver;
 
+	#ifdef _DEBUG
 
+	if (std::filesystem::exists("game.dll")) {
+		std::filesystem::remove("game.dll");
+		std::println("DEBUG - REMOVED PREVIOUS GAME DLL");
+	}
+	std::println("DEBUG - COPIED NEW GAME DLL");
+	std::filesystem::copy_file("../x64/Debug/game.dll", "game.dll");
+
+	#endif
+
+	HMODULE gameDLL = LoadLibraryA("game.dll");
+
+	FuncExchange fe =
+		(FuncExchange)GetProcAddress(gameDLL, "exchangeFunctions");
+
+	WinterEngineHandle eHnd = {
+		.ProofOfCalling = proofOfCalling
+	};
+
+	WinterGameHandle gHnd = fe(eHnd);
+	if (gHnd.ProofOfCalling() == 0x05060708) {
+		std::println("Engine called game successfully.");
+	}
 
 	// We're on Windows here so we don't have many choices
 	megaDriver = new MegaDrivers::Impl::Windows();

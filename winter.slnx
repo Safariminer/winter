@@ -3,5 +3,6 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Project Path="game/game.vcxproj" Id="2e84acde-51a3-4bbc-ade8-c7be99882804" />
   <Project Path="winter/winter.vcxproj" Id="d49011df-1edd-44f8-a239-d6453fbd84e4" />
 </Solution>

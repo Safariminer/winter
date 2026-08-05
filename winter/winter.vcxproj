@@ -164,6 +164,7 @@
     <ClCompile Include="WindowsMegaDriver.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\common\WinterCommon.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Drivers.h" />
     <ClInclude Include="Geometry.h" />
